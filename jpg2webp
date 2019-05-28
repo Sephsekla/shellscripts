@@ -1,4 +1,5 @@
 shopt -s nullglob
+mkdir -p ./min/webp
 for file in *.jpg ; 
     do cwebp -q 80 -resize 2000 0 "$file" -o "./min/webp/${file%.jpg}.webp"; 
 done
