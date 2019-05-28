@@ -1,0 +1,4 @@
+shopt -s nullglob
+for file in *.png ; 
+    do cwebp -q 80 -resize 2000 0 "$file" -o "./min/webp/${file%.png}.webp"; 
+done

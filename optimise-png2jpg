@@ -1,0 +1,4 @@
+shopt -s nullglob
+for file in *.png ; 
+    do magick convert "$file" -quality 70 -resize 2000 "./min/${file%.png}.jpg"; 
+done
