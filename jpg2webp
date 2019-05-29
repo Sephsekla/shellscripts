@@ -5,7 +5,7 @@ while getopts 'r:' OPTION; do
       shopt -s nullglob
         mkdir -p ./min/webp
         for file in *.jpg ; 
-            do cwebp -q 80 -resize $OPTARG 0 "$file" -o "./min/webp/${file%.png}.webp"; 
+            do cwebp -q 80 -resize $OPTARG 0 "$file" -o "./min/webp/${file%.jpg}.webp"; 
         done
         exit 1
       ;;
@@ -22,5 +22,5 @@ shift "$(($OPTIND -1))"
 shopt -s nullglob
 mkdir -p ./min/webp
 for file in *.jpg ; 
-    do cwebp -q 80 0 "$file" -o "./min/webp/${file%.png}.webp"; 
+    do cwebp -q 80 0 "$file" -o "./min/webp/${file%.jpg}.webp"; 
 done
