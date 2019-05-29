@@ -1,5 +1,26 @@
+
+while getopts 'r:' OPTION; do
+  case "$OPTION" in
+    r)
+      shopt -s nullglob
+        mkdir -p ./min/webp
+        for file in *.jpg ; 
+            do cwebp -q 80 -resize $OPTARG 0 "$file" -o "./min/webp/${file%.png}.webp"; 
+        done
+        exit 1
+      ;;
+
+  
+    ?)
+      echo "script usage: $(basename $0) [-r somevalue]" >&2
+      exit 1
+      ;;
+  esac
+done
+shift "$(($OPTIND -1))"
+
 shopt -s nullglob
 mkdir -p ./min/webp
 for file in *.jpg ; 
-    do cwebp -q 80 -resize 2000 0 "$file" -o "./min/webp/${file%.jpg}.webp"; 
+    do cwebp -q 80 0 "$file" -o "./min/webp/${file%.png}.webp"; 
 done
