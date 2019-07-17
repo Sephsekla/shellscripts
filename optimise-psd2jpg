@@ -1,0 +1,5 @@
+shopt -s nullglob
+mkdir -p ./min
+for file in *.psd ; 
+    do magick convert "${file[0]}" -flatten -quality 70 -resize 2000 "./min/${file%.psd}.jpg"; 
+done
