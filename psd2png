@@ -1,0 +1,5 @@
+shopt -s nullglob
+mkdir -p ./min
+for file in *.psd ; 
+    do magick convert "${file}" "./min/${file%.psd}.png"; 
+done
