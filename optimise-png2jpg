@@ -1,5 +1,23 @@
-shopt -s nullglob
-mkdir -p ./min
-for file in *.png ; 
-    do magick convert "$file" -quality 70 -resize 2000 "./min/${file%.png}.jpg"; 
+while getopts 'r:' OPTION; do
+  case "$OPTION" in
+    r)
+      shopt -s nullglob
+        mkdir -p ./min
+        for file in *.png ; 
+            do magick convert "$file" -quality 70 -resize $OPTARG "./min/${file%.png}.jpg"; 
+        done
+        exit 1
+      ;;
+
+  
+    ?)
+      echo "script usage: $(basename $0) [-r somevalue]" >&2
+      exit 1
+      ;;
+  esac
 done
+shift "$(($OPTIND -1))"
+
+for file in *.png ; 
+            do magick convert "$file" -quality 70 "./min/${file%.png}.jpg"; 
+ done
