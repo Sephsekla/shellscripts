@@ -1,0 +1,7 @@
+
+shopt -s nullglob
+mkdir -p ./min/webm
+for file in *.mp4 ; 
+    do ffmpeg  -i "$file"  -b:v 0  -crf 30  -pass 1  -an -f webm /dev/null
+    ffmpeg  -i "$file"  -b:v 0  -crf 30  -pass 2  "./min/webm/${file%.mp4}.webm"
+done
